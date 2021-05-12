@@ -56,7 +56,7 @@ func main() {
 				fmt.Println(err)
 			} else {
 				v := strings.TrimPrefix(string(stdout), "throttled=")
-				if s, err := strconv.ParseInt(v, 0, 32); err == nil {
+				if s, err := strconv.ParseInt(v, 0, 32); err != nil {
 					for key, value := range checks {
 						throttled.With(prometheus.Labels{
 							"bit":         fmt.Sprintf("%v", key),
